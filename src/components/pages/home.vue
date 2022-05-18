@@ -26,10 +26,10 @@ export default {
     justify-content: space-between;
     &.Form {
       width: 40%;
-      color: rgb(223, 39, 39)
+      color: rgb(223, 39, 39, 0.8)
     }
     &.Diagram {
-      width: 60%;
+      min-width: 60%;
       margin-left: auto;
       margin-right: auto;
     }
