@@ -1,10 +1,8 @@
 <template>
 <div class="chart">
-
   <div  class="chart item1">
     <canvas  id="myChartBtcToUsd" ></canvas>
   </div>
-
 </div>
 </template>
 

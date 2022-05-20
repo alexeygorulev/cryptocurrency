@@ -11,9 +11,6 @@
       :markerIdResult="markerIdResult"
       />
     </div>
-
-
-
   </div>
 </template>
 

@@ -20,7 +20,6 @@
           <div class="title__list">
             <div >
               <p>Name</p>
-
             </div>
             <div class="title__items">
               <p>Price $</p>
@@ -28,7 +27,6 @@
               <p>decrease</p>
               <p>Total</p>
             </div>
-
           </div>
           <div class="title__list">
             <div class="item" >
@@ -37,44 +35,32 @@
                 {{item.name}}
                 </p>
               </div>
-
             </div>
             <div class="title__items">
               <div class="price" >
                 <p v-for="item in items" :key="item.id" >$ {{item.priceUsd}}</p>
-
               </div>
               <div class="item" >
                 <p v-for="item in items" :key="item.id" >
                   <img class="img__selected icons" :src="item.urlPlus" alt="">
                 </p>
-
               </div>
               <div class="item" >
                 <p v-for="item in items" :key="item.id" >
                   <img class="img__selected icons" :src="item.urlMinus" alt="">
                 </p>
-
               </div>
               <div class="total">
                 <p v-for="item in items" :key="item.id" >{{item.total}}</p>
-
               </div>
             </div>
-
           </div>
-
-
-
           </div>
         </div>
       </div>
     <div class="Card Diagram">
       <DiagramPortfolio />
     </div>
-
-
-
   </div>
 </template>
 
@@ -82,7 +68,6 @@
 import DataService from "@/services/DataService"
 import DiagramPortfolio  from "@/components/UI/DiagramPortfolio.vue";
 export default {
-
   components: {DiagramPortfolio, DataService},
   data() {
     return {
@@ -133,22 +118,17 @@ export default {
       deep: true,
     }
   },
-
-  created() {
+  mounted() {
     this.getPriceBtc()
     this.getPriceEth()
-    console.log(this.items[2].priceUsd)
     this.items[0].priceUsd = this.items[0].priceUsd * this.items[0].total
     this.items[1].priceUsd = this.items[1].priceUsd * this.items[1].total
     this.items[2].priceUsd = this.items[2].priceUsd * this.items[2].total
-
-
   },
   methods: {
     totalPlus(context) {
-      this.item[context]
+      console.log(context)
     },
-
     getPriceBtc() {
       DataService.getPriceBtcToUsd()
       .then((res) => {
@@ -165,8 +145,6 @@ export default {
         for (let index = 0; index < this.items.length; index++) {
           if (this.items[index].id == 'eth') {
             this.items[index].priceUsd = res.data.ethereum.usd * this.items[index].total
-            console.log(this.items[index].priceUsd)
-            console.log(this.items[2].priceUsd)
           }
         }
       })
@@ -185,8 +163,3 @@ export default {
   },
 }
 </script>
-
-
-<style lang="scss">
-
-</style>

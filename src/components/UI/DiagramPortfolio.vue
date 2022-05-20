@@ -1,28 +1,22 @@
 <template>
 <div class="chart">
-
   <div  class="chart item1">
     <canvas  id="Portfolio" ></canvas>
   </div>
-
 </div>
 </template>
 
 <script>
- import Chart from 'chart.js/auto';
+import Chart from 'chart.js/auto';
 export default {
-
   components: {Chart},
   mounted() {
     const ctx = document.getElementById('Portfolio').getContext("2d");
-
     let delayed;
-
     let gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, 'rgba(22, 199, 132, 0.6)');
     gradient.addColorStop(0.5, 'rgba(22, 199, 132, 0.15)');
     gradient.addColorStop(1, 'rgba(22, 199, 132, 0)');
-
 
     const labels = [
       "17-05.2022",
@@ -98,7 +92,6 @@ export default {
       responsive: true,
       },
     };
-
 
       let myChart = new Chart(ctx, config)
     }
