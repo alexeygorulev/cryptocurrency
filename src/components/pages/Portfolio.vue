@@ -41,7 +41,7 @@
                 <p v-for="item in items" :key="item.id" >$ {{item.priceUsd}}</p>
               </div>
               <div class="item" >
-                <p v-for="item in items" :key="item.id" >
+                <p @click="someMethod" v-for="item in items" :key="item.id" >
                   <img class="img__selected icons" :src="item.urlPlus" alt="">
                 </p>
               </div>

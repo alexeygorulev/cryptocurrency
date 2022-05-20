@@ -39,7 +39,7 @@ export default {
     datasets: [
     {
       data: [1,5,6 ,1,24,412,4,1,412,4,21,412,43,12,3,123,12,12,3 ],
-      label: '123',
+      label: 'ETH',
       backgroundColor: gradient,
       borderColor: 'rgba(22, 199, 132, 1)',
       borderWidth: 1.3,
@@ -61,7 +61,7 @@ export default {
     },
     {
       data: [1,3,1,23,1,23,123,12,3 ],
-      label: '123',
+      label: 'BTC',
       backgroundColor: gradient,
       borderColor: 'rgba(22, 199, 132, 1)',
       borderWidth: 1.3,
