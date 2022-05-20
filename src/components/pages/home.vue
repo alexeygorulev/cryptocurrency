@@ -1,10 +1,15 @@
 <template>
   <div class="Card">
     <div class="Card Form">
-      <Form/>
+      <Form
+      @markerId="getMarkerId"
+      />
     </div>
     <div class="Card Diagram">
-      <Diagram />
+      <Diagram
+      :markerIdCurrency="markerIdCurrency"
+      :markerIdResult="markerIdResult"
+      />
     </div>
 
 
@@ -16,7 +21,22 @@
 import Form from "@/components/UI/Form.vue"
 import Diagram from "@/components/UI/Diagram.vue"
 export default {
-  components: {Form, Diagram}
+  components: {Form, Diagram},
+  data() {
+    return {
+      markerIdCurrency: '',
+      markerIdResult: '',
+    }
+  },
+    methods: {
+    getMarkerId(result, currency) {
+      this.markerIdCurrency = currency
+      this.markerIdResult = result
+    },
+    getMarkerIdToDiagram(currency, result) {
+      this.$emit('markerIdToDiagram', currency, result)
+    }
+  }
 }
 </script>
 

@@ -1,7 +1,7 @@
 export const vsCurrencies = [
-  { name: 'BTC', id: 1, url: require("@/assets/img/bitcoin.png"), exchangeRate: {usd: 0.23321, eth: 0.4444, btc: 1},},
-  { name: 'USD', id: 2, url: require("@/assets/img/USD.png"), exchangeRate: {usd: 1, eth: "", btc: ""},},
-  { name: 'ETN', id: 3, url: require("@/assets/img/eth.png"), exchangeRate: {usd: "", eth: 1, btc: ""},},
+  { name: 'BTC', id: "btc", url: require("@/assets/img/bitcoin.png"), exchangeRate: {usd: 0.23321, eth: 0.4444, btc: 1},},
+  { name: 'USD', id: "usd", url: require("@/assets/img/USD.png"), exchangeRate: {usd: 1, eth: "", btc: ""},},
+  { name: 'ETN', id: "eth", url: require("@/assets/img/eth.png"), exchangeRate: {usd: "", eth: 1, btc: ""},},
 ]
 
 export const errorSymbols = ' ' + 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ-+/*()&^%$#<>@!||'
@@ -21,7 +21,7 @@ export const selected = {
 
 export const selectedCurrency = {
   name: 'BTN',
-  id: 1,
+  id: 'btc',
   url: require("@/assets/img/bitcoin.png"),
   exchangeRate: {usd: "", eth: 0.44444, btc: 1,},
 }
@@ -40,7 +40,7 @@ export const links = [
   alias: "home"
 },
 {
-  title: 'About',
+  title: 'Portfolio',
   url: '/about',
   alias: "about"
 },

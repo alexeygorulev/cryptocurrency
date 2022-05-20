@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory, createWebHashHistory} from "vue-router";
 
 import HomePage from "@/components/pages/home.vue"
-import AboutPage from "@/components/pages/about.vue"
+import AboutPage from "@/components/pages/Portfolio.vue"
 import NotFoundPage from "@/components/pages/notFound.vue"
 
 const routerHistory = createWebHistory();

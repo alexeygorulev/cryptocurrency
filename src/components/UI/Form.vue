@@ -12,7 +12,7 @@
     <div class="form__wrapper">
       <form action="#" class="note-form">
         <div class="form__container">
-          <div class="class__div">
+          <div class="form__list">
             <div>From</div>
             <div>To</div>
           </div>
@@ -67,19 +67,25 @@ export default {
   },
   watch: {
     amountOfCurrency(update) {
-      this.fixedNumber()
+      console.log(update)
+      if (this.selected.id == this.selectedCurrency.id) {
+        this.amountOfCurrency = ""
+        this.сonversionResult = "выберите разные токены"
+      } else this.fixedNumber()
   },
     selected(update) {
       this.amountOfCurrency = ""
       this.getPrices()
       this.changeSelectMenu()
+      this.markerIdToHome(this.selectedCurrency.id,this.selected.id)
 
 
     },
-    selectedCurrency( update) {
+    selectedCurrency(update) {
       this.amountOfCurrency = ""
       this.getPrices()
       this.changeSelectMenu()
+      this.markerIdToHome(this.selectedCurrency.id, this.selected.id,)
 
 
     }
@@ -88,11 +94,13 @@ export default {
     this.getPrices()
   },
   methods: {
+    markerIdToHome(currency, result) {
+        this.$emit('markerId', currency, result)
+      },
     optionSelect(option) {
       this.selected = option
     },
     currencySelect(currency) {
-      console.log(currency)
       this.selectedCurrency = currency
     },
     changeValue() {
@@ -107,17 +115,28 @@ export default {
     changeSelectMenu() {
       const a = Object.entries(this.selectedCurrency.exchangeRate)
       const b = a.map(item => {
-        if (item[0] == this.selected.id) {
+        if(this.selected.id == this.selectedCurrency.id) {
+          this.amountOfCurrency = ""
+          this.сonversionResult = "выберите разные токены"
+        }
+        else if (item[0] == this.selected.id) {
           this.сonversionResult = item[1]
           }
+
         })
+
+
     },
     fixedNumber() {
-      const findErrorSymbol = errorSymbols.split('').map(item => item == this.amountOfCurrency ? true : false).find(item => item == true)
-      if (findErrorSymbol) {
+      const errorSymbol = this.amountOfCurrency.split('')
+      let errorMarkerWords = ''
+      for (let index = 0; index < errorSymbol.length; index++) {
+        const elementValidationWords = this.errorSymbols.split('').map(item => item).find(item => item == errorSymbol[index])
+        errorMarkerWords = errorSymbols.split('').map(item => item == elementValidationWords ? true : false).find(item => item == true)
+      }
+      if (errorMarkerWords) {
         this.сonversionResult = 'Не корректное значение'
-      } else
-      {
+      } else {
         this.changeValue()
       if (this.сonversionResult == 0) {
         this.сonversionResult = ""
@@ -169,5 +188,4 @@ export default {
 }
 </script>
 <style lang="scss">
-
 </style>
