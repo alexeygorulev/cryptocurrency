@@ -66,3 +66,39 @@ export const icons = [{
   alias: "inst",
   path: require('@/assets/img/inst.png'),
 },]
+
+export const items = [
+  {
+    name: "Bitcoin",
+    id: "btc",
+    add: "+",
+    decrease: '-',
+    url: require("@/assets/img/bitcoin.png"),
+    urlPlus: require("@/assets/img/plus.png"),
+    urlMinus: require("@/assets/img/minus.png"),
+    priceUsd: 3001.32321,
+    total: 12,
+  },
+  {
+    name: "Usd",
+    id: "usd",
+    add: "+",
+    decrease: '-',
+    url: require("@/assets/img/USD.png"),
+    urlPlus: require("@/assets/img/plus.png"),
+    urlMinus: require("@/assets/img/minus.png"),
+    priceUsd: 1,
+    total: 12300
+  },
+  {
+    name: "Ethereum",
+    add: "+",
+    id: "eth",
+    decrease: '-',
+    url: require("@/assets/img/eth.png"),
+    urlPlus: require("@/assets/img/plus.png"),
+    urlMinus: require("@/assets/img/minus.png"),
+    priceUsd: 14000,
+    total: 5
+  },
+]

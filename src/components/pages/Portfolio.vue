@@ -41,26 +41,14 @@
                 <p v-for="item in items" :key="item.id" >$ {{item.priceUsd}}</p>
               </div>
               <div class="item" >
-                <p  >
-                  <img @click="addBtc" class="img__selected icons" src="@/assets/img/plus.png" alt="">
-                </p>
-                <p  >
-                  <img @click="addUsd" class="img__selected icons" src="@/assets/img/plus.png" alt="">
-                </p>
-                <p  >
-                  <img @click="addEth" class="img__selected icons" src="@/assets/img/plus.png" alt="">
-                </p>
+                <p><img @click="addBtc" class="img__selected icons" src="@/assets/img/plus.png" alt=""></p>
+                <p><img @click="addUsd" class="img__selected icons" src="@/assets/img/plus.png" alt=""></p>
+                <p><img @click="addEth" class="img__selected icons" src="@/assets/img/plus.png" alt=""></p>
               </div>
               <div class="item" >
-                <p>
-                  <img @click="removeBtc" class="img__selected icons" src="@/assets/img/minus.png" alt="">
-                </p>
-                <p>
-                  <img @click="removeUsd" class="img__selected icons" src="@/assets/img/minus.png" alt="">
-                </p>
-                <p>
-                  <img @click="removeEth" class="img__selected icons" src="@/assets/img/minus.png" alt="">
-                </p>
+                <p><img @click="removeBtc" class="img__selected icons" src="@/assets/img/minus.png" alt=""></p>
+                <p><img @click="removeUsd" class="img__selected icons" src="@/assets/img/minus.png" alt=""></p>
+                <p><img @click="removeEth" class="img__selected icons" src="@/assets/img/minus.png" alt=""></p>
               </div>
               <div class="total">
                 <p v-for="item in items" :key="item.id" >{{item.total}}</p>
@@ -83,8 +71,9 @@
 <script>
 import DataService from "@/services/DataService"
 import DiagramPortfolio  from "@/components/UI/DiagramPortfolio.vue";
+import {items} from "@/_config"
 export default {
-  components: {DiagramPortfolio, DataService},
+  components: {DiagramPortfolio, DataService, items},
   data() {
     return {
       balance: 0,
@@ -94,53 +83,13 @@ export default {
       currencyMovementBtc: [],
       currencyMovementUsd: [],
       currencyMovementEth: [],
-      items: [
-        {
-          name: "Bitcoin",
-          id: "btc",
-          add: "+",
-          decrease: '-',
-          url: require("@/assets/img/bitcoin.png"),
-          urlPlus: require("@/assets/img/plus.png"),
-          urlMinus: require("@/assets/img/minus.png"),
-          priceUsd: 3001.32321,
-          total: 12,
-        },
-        {
-          name: "Usd",
-          id: "usd",
-          add: "+",
-          decrease: '-',
-          url: require("@/assets/img/USD.png"),
-          urlPlus: require("@/assets/img/plus.png"),
-          urlMinus: require("@/assets/img/minus.png"),
-          priceUsd: 1,
-          total: 12300
-        },
-        {
-          name: "Ethereum",
-          add: "+",
-          id: "eth",
-          decrease: '-',
-          url: require("@/assets/img/eth.png"),
-          urlPlus: require("@/assets/img/plus.png"),
-          urlMinus: require("@/assets/img/minus.png"),
-          priceUsd: 14000,
-          total: 5
-        },
-      ]
-    }
-  },
-  watch: {
-    balance(update) {
+      items: items,
     }
   },
   mounted() {
     this.getPriceBtc()
     this.getPriceEth()
     this.getPriceUsd()
-    this.balance.toFixed(2)
-
   },
   methods: {
     getPriceUsd() {
@@ -178,10 +127,21 @@ export default {
       if (number.toFixed().toString().length > 3 && number.toFixed().toString().length < 7 ) {
         const a = number.toFixed().toString().split('').reverse()
         a.splice(3,0, ",")
-        return  a.reverse().join("")
+        return "$" + a.reverse().join("")
         } else if( number.toFixed().toString().length > 6 ) {
           const a = number.toFixed().toString().split('').reverse()
           a.splice(3, 0, ',')
+          return  a.reverse().join("")
+        }
+    },
+    removeComma(number) {
+      if (number.toFixed().toString().length > 3 && number.toFixed().toString().length < 7 ) {
+        const a = number.toFixed().toString().split('').reverse()
+        a.splice(4,1)
+        return  a.reverse().join("")
+        } else if( number.toFixed().toString().length > 6 ) {
+          const a = number.toFixed().toString().split('').reverse()
+          a.splice(2, 1)
           return  a.reverse().join("")
         }
     },
@@ -223,7 +183,7 @@ export default {
     addUsd() {
       if (this.items[1].total > 0) {
       this.items[1].total++
-      this.items[1].priceUsd  = this.items[1].priceUsd + 1
+      this.items[1].priceUsd++
       this.currencyMovementUsd.unshift(this.items[1].priceUsd)
       this.balance += this.priceUsd
       }
@@ -231,7 +191,7 @@ export default {
     removeUsd() {
       if (this.items[1].total > 0) {
       this.items[1].total--
-      this.items[1].priceUsd = this.items[1].priceUsd - 1
+      this.items[1].priceUsd--
       this.currencyMovementUsd.unshift(this.items[1].priceUsd)
       this.balance -= this.priceUsd
       }

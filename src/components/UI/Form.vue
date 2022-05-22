@@ -78,16 +78,12 @@ export default {
       this.getPrices()
       this.changeSelectMenu()
       this.markerIdToHome(this.selectedCurrency.id,this.selected.id)
-
-
     },
     selectedCurrency(update) {
       this.amountOfCurrency = ""
       this.getPrices()
       this.changeSelectMenu()
       this.markerIdToHome(this.selectedCurrency.id, this.selected.id,)
-
-
     }
   },
   mounted(){
@@ -124,8 +120,6 @@ export default {
           }
 
         })
-
-
     },
     fixedNumber() {
       const errorSymbol = this.amountOfCurrency.split('')
@@ -177,7 +171,7 @@ export default {
         this.vsCurrencies[1].exchangeRate.eth = res.data.ethereum.usd
       })
       .catch((e) => console.log(e))
-
+// ////////////////////////////////////////////////////
       DataService.getPriceEthToBtc()
       .then((res) => {
         this.vsCurrencies[0].exchangeRate.eth = res.data.ethereum.btc

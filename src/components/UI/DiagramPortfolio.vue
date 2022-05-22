@@ -16,7 +16,6 @@ export default {
       movementEth: [45212,39232,36212,46231,41823],
       movementUsd: [30230,32423,55932,61212,36832],
       destroyNumber: 0,
-
     }
   },
   props: {
@@ -45,7 +44,6 @@ export default {
       handler(update) {
         this.movementEth = update
         // this.getPortfolioDiagram(this.movementBtc, this.movementEth, this.movementUsd)
-
       },
       deep: true
     },
@@ -54,17 +52,13 @@ export default {
         this.movementUsd = update
         // const randomNumber = Math.random()
         // this.getPortfolioDiagram(this.movementBtc, this.movementEth, this.movementUsd, randomNumber)
-
       },
       deep: true
     },
-
   },
-
   mounted() {
     this.getPortfolioDiagram(this.movementBtc, this.movementUsd, this.movementEth,)
-
-    },
+  },
   methods: {
     getPortfolioDiagram(data1, data2, data3, randomNumber) {
     let myChart = randomNumber
