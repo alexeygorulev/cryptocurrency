@@ -41,13 +41,25 @@
                 <p v-for="item in items" :key="item.id" >$ {{item.priceUsd}}</p>
               </div>
               <div class="item" >
-                <p @click="someMethod" v-for="item in items" :key="item.id" >
-                  <img class="img__selected icons" :src="item.urlPlus" alt="">
+                <p  >
+                  <img @click="addBtc" class="img__selected icons" src="@/assets/img/plus.png" alt="">
+                </p>
+                <p  >
+                  <img @click="addUsd" class="img__selected icons" src="@/assets/img/plus.png" alt="">
+                </p>
+                <p  >
+                  <img @click="addEth" class="img__selected icons" src="@/assets/img/plus.png" alt="">
                 </p>
               </div>
               <div class="item" >
-                <p v-for="item in items" :key="item.id" >
-                  <img class="img__selected icons" :src="item.urlMinus" alt="">
+                <p>
+                  <img @click="removeBtc" class="img__selected icons" src="@/assets/img/minus.png" alt="">
+                </p>
+                <p>
+                  <img @click="removeUsd" class="img__selected icons" src="@/assets/img/minus.png" alt="">
+                </p>
+                <p>
+                  <img @click="removeEth" class="img__selected icons" src="@/assets/img/minus.png" alt="">
                 </p>
               </div>
               <div class="total">
@@ -59,7 +71,11 @@
         </div>
       </div>
     <div class="Card Diagram">
-      <DiagramPortfolio />
+      <DiagramPortfolio
+        :currencyMovementBtc ="currencyMovementBtc"
+        :currencyMovementUsd ="currencyMovementUsd"
+        :currencyMovementEth ="currencyMovementEth"
+      />
     </div>
   </div>
 </template>
@@ -71,18 +87,24 @@ export default {
   components: {DiagramPortfolio, DataService},
   data() {
     return {
-      balance: 23142,
+      balance: 0,
+      priceBtc: "",
+      priceEth: "",
+      priceUsd: 1,
+      currencyMovementBtc: [],
+      currencyMovementUsd: [],
+      currencyMovementEth: [],
       items: [
         {
           name: "Bitcoin",
-          id: 0,
+          id: "btc",
           add: "+",
           decrease: '-',
           url: require("@/assets/img/bitcoin.png"),
           urlPlus: require("@/assets/img/plus.png"),
           urlMinus: require("@/assets/img/minus.png"),
-          priceUsd: 3001,
-          total: 23
+          priceUsd: 3001.32321,
+          total: 12,
         },
         {
           name: "Usd",
@@ -93,7 +115,7 @@ export default {
           urlPlus: require("@/assets/img/plus.png"),
           urlMinus: require("@/assets/img/minus.png"),
           priceUsd: 1,
-          total: 23
+          total: 12300
         },
         {
           name: "Ethereum",
@@ -104,37 +126,37 @@ export default {
           urlPlus: require("@/assets/img/plus.png"),
           urlMinus: require("@/assets/img/minus.png"),
           priceUsd: 14000,
-          total: 23
+          total: 5
         },
       ]
     }
   },
   watch: {
-    items: {
-      handle(update) {
-        console.log('сработал')
-        this.balance = +this.items[0].priceUsd + +this.items[1].priceUsd + +this.items[2].priceUsd
-      },
-      deep: true,
+    balance(update) {
     }
   },
   mounted() {
     this.getPriceBtc()
     this.getPriceEth()
-    this.items[0].priceUsd = this.items[0].priceUsd * this.items[0].total
-    this.items[1].priceUsd = this.items[1].priceUsd * this.items[1].total
-    this.items[2].priceUsd = this.items[2].priceUsd * this.items[2].total
+    this.getPriceUsd()
+    this.balance.toFixed(2)
+
   },
   methods: {
-    totalPlus(context) {
-      console.log(context)
+    getPriceUsd() {
+      this.items[1].priceUsd *= this.items[1].total
+      this.currencyMovementUsd.unshift(this.items[1].priceUsd)
+
     },
     getPriceBtc() {
       DataService.getPriceBtcToUsd()
       .then((res) => {
         for (let index = 0; index < this.items.length; index++) {
           if (this.items[index].id == 'btc') {
+            this.priceBtc = res.data.bitcoin.usd
             this.items[index].priceUsd = res.data.bitcoin.usd * this.items[index].total
+            this.balance +=  this.items[index].priceUsd
+            this.currencyMovementBtc.unshift(this.items[index].priceUsd)
           }
         }
       })
@@ -143,23 +165,79 @@ export default {
       DataService.getPriceEthToUsd()
       .then((res) => {
         for (let index = 0; index < this.items.length; index++) {
+          this.priceEth = res.data.ethereum.usd
           if (this.items[index].id == 'eth') {
             this.items[index].priceUsd = res.data.ethereum.usd * this.items[index].total
+            this.balance +=  this.items[index].priceUsd
+            this.currencyMovementEth.unshift(this.items[index].priceUsd)
           }
         }
       })
     },
-    fixedPrice(number) {
-      if (number.toString().length > 3 && number.toString().length < 7 ) {
-        const a = number.toString().split('').reverse()
+    addComma(number) {
+      if (number.toFixed().toString().length > 3 && number.toFixed().toString().length < 7 ) {
+        const a = number.toFixed().toString().split('').reverse()
         a.splice(3,0, ",")
         return  a.reverse().join("")
-        } else if( number.toString().length > 6 ) {
+        } else if( number.toFixed().toString().length > 6 ) {
           const a = number.toFixed().toString().split('').reverse()
           a.splice(3, 0, ',')
           return  a.reverse().join("")
         }
     },
+    // добавление и убавление биткойна
+    addBtc() {
+      if (this.items[0].total > 0) {
+      this.items[0].total++
+      this.items[0].priceUsd += this.priceBtc
+      this.currencyMovementBtc.unshift(this.items[0].priceUsd)
+      this.balance += this.priceBtc
+      }
+    },
+    removeBtc() {
+      if (this.items[0].total > 0) {
+      this.items[0].total--
+      this.items[0].priceUsd -= this.priceBtc
+      this.currencyMovementBtc.unshift(this.items[0].priceUsd)
+      this.balance -= this.priceBtc
+      }
+    },
+    // добавление и убавление эфира
+    addEth() {
+      if (this.items[2].total > 0) {
+      this.items[2].total++
+      this.items[2].priceUsd += this.priceEth
+      this.currencyMovementEth.unshift(this.items[2].priceUsd)
+      this.balance += this.priceEth
+      }
+    },
+    removeEth() {
+      if (this.items[2].total > 0) {
+      this.items[2].total--
+      this.items[2].priceUsd -= this.priceEth
+      this.currencyMovementEth.unshift(this.items[2].priceUsd)
+      this.balance -= this.priceEth
+      }
+    },
+    // добавление и убавление доллара
+    addUsd() {
+      if (this.items[1].total > 0) {
+      this.items[1].total++
+      this.items[1].priceUsd  = this.items[1].priceUsd + 1
+      this.currencyMovementUsd.unshift(this.items[1].priceUsd)
+      this.balance += this.priceUsd
+      }
+    },
+    removeUsd() {
+      if (this.items[1].total > 0) {
+      this.items[1].total--
+      this.items[1].priceUsd = this.items[1].priceUsd - 1
+      this.currencyMovementUsd.unshift(this.items[1].priceUsd)
+      this.balance -= this.priceUsd
+      }
+    },
+
+
   },
 }
 </script>
