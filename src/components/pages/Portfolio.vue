@@ -201,3 +201,11 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+
+.note-form {
+  padding: 15px 0 0 15px;
+}
+
+</style>

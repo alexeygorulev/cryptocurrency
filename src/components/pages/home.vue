@@ -37,7 +37,6 @@ export default {
   .Card {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     // border: 1px solid #fff;
     // width: 100vw;
   }

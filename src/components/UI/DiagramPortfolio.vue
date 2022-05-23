@@ -1,8 +1,6 @@
 <template>
 <div class="chart">
-  <div  class="chart item1">
     <canvas  id="Portfolio" ></canvas>
-  </div>
 </div>
 </template>
 
@@ -166,3 +164,12 @@ export default {
 
   }
 </script>
+
+<style lang="scss">
+.chart {
+  position: relative;
+  width: 50vw;
+  height: 20vh;
+}
+
+</style>
