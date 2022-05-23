@@ -1,12 +1,12 @@
 <template>
   <div class="v-select">
-    <p @click="areOptionsVisible = !areOptionsVisible"
+    <div @click="areOptionsVisible = !areOptionsVisible"
     class="title">
     <img class="img__selected"
     :src="selected.url"
     alt="1">
     {{selected.name}}
-    </p>
+    </div>
     <div class="options" v-if="areOptionsVisible">
       <div class="options__items"
       v-for="option in options"

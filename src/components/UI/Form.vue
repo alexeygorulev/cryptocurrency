@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="form__wrapper">
-      <form action="#" class="note-form">
+      <form action="#" >
         <div class="form__container">
           <div class="form__list">
             <div>From</div>
@@ -27,15 +27,10 @@
           />
           </div>
           <div class="input__container">
-            <div class="input__list">
-              <input  class="input__item isCenter" type="text" v-model="amountOfCurrency">
-            </div>
-            <div >
-              <input disabled class="input__item isCenter" type="text" v-model="сonversionResult">
-            </div>
+              <input  class="input__item" type="text" v-model="amountOfCurrency">
+              <input disabled class="input__item" type="text" v-model="сonversionResult">
           </div>
         </div>
-        <img class="input__icon" src="@/assets/img/downArrow.png" alt="123">
       </form>
     </div>
 
@@ -155,7 +150,6 @@ export default {
       DataService.getPriceBtcToUsd()
       .then((res) => {
         this.vsCurrencies[1].exchangeRate.btc = res.data.bitcoin.usd
-
       })
       .catch((e) => console.log(e))
 // ////////////////////////////////////////////////////

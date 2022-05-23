@@ -1,16 +1,12 @@
 <template>
   <div class="Card">
-    <div class="Card Form">
       <Form
       @markerId="getMarkerId"
       />
-    </div>
-    <div class="Card Diagram">
       <Diagram
       :markerIdCurrency="markerIdCurrency"
       :markerIdResult="markerIdResult"
       />
-    </div>
   </div>
 </template>
 
@@ -37,19 +33,14 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
   .Card {
     display: flex;
     justify-content: space-between;
-    &.Form {
-      width: 40%;
-      color: rgb(223, 39, 39, 0.8)
-    }
-    &.Diagram {
-      min-width: 60%;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    flex-wrap: wrap;
+    // border: 1px solid #fff;
+    // width: 100vw;
   }
+
 
 </style>

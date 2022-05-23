@@ -1,28 +1,24 @@
 
-  .img__selected {
-    width: 20px;
-    height: 20px;
+.img__selected {
+    max-width: 1.4em;
     margin-right: 5px;
   }
   .title {
-    display: flex;
-    align-content: center;
     position: relative;
-    bottom: 3px;
-    padding-left: 15px;
+    color: #fff;
+    top: 20%;
   }
   .v-select {
     margin: 15px 10px 15px 10px;
     position: relative;
     border: 1.5px solid rgba(145, 59, 169, 0.3);
-    height: 32px;
-    width: 100px;
     display: flex;
     flex-direction: column;
+    height: 5vh;
+    min-width: 5.5rem;
     border-radius: 7px;
-    font-size: 13px;
+    font-size: 0.8rem;
     font-weight: bold;
-
     cursor: pointer;
   }
   .options__items {
@@ -36,7 +32,7 @@
   .options {
     border: 1.5px solid rgba(145, 59, 169, 0.3);
     background-color: #222531;
-    width: 100px;
+    min-width: 5.5rem;
     position:absolute ;
     z-index: 999;
     top: 35px;

@@ -64,7 +64,7 @@ footer,
 section,
 .section {
   position: relative;
-  // padding: 10px 10px;
+  padding: 10px 10px;
   @media screen and (max-width: $desktopWidth) {
     padding: 36px 0;
   }
@@ -118,4 +118,4 @@ section,
 
 
 @import './common/_common';
-// @import './helpers/_helpers'
+@import './helpers/helpers'
