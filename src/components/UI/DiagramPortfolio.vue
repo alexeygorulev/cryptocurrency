@@ -1,5 +1,5 @@
 <template>
-<div class="chart">
+<div class="chart__portfolio">
     <canvas  id="Portfolio" ></canvas>
 </div>
 </template>
@@ -166,7 +166,7 @@ export default {
 </script>
 
 <style lang="scss">
-.chart {
+.chart__portfolio {
   position: relative;
   width: 50vw;
   height: 20vh;
