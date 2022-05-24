@@ -23,5 +23,20 @@
   position: relative;
   width: 50vw;
   height: 300px;
+  @media screen and (max-width: $lgDesktopWidth) {
+    width: 50vw;
+  }
+  @media screen and (max-width: $smDesktopWidth) {
+    width: 47vw;
+  }
+  @media screen and (max-width: $tableWidth) {
+    width: 50vw;
+    padding-left: 30px;
+  }
+  @media screen and (max-width: $smTableWidth) {
+    width: 94vw;
+    padding: 25px 0 0 0;
+  }
+
 }
 

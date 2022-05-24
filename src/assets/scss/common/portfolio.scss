@@ -4,7 +4,6 @@
   flex-direction: column;
   max-width: 120px;
 }
-
 .title__items {
   display: flex;
   justify-content: space-around;
@@ -15,7 +14,6 @@
     margin-left: 5px;
   }
 }
-
 .title__list {
   display: flex;
   flex-direction: row;
@@ -24,6 +22,9 @@
   color: #c4c4c4;
   & p {
     padding: 4px 0;
+  }
+  @media screen and (max-width: $smPhoneWidth) {
+    font-size: 0.6em;
   }
 }
 .img__selected {
@@ -54,10 +55,10 @@
   }
 }
 .portfolio__container {
-min-width: 45vw;
-box-shadow: 0px 2px 10px 0px rgb(145, 59, 169, 0.3);
-height: 300px;
-font-size: 1em;
+  min-width: 45vw;
+  box-shadow: 0px 2px 10px 0px rgb(145, 59, 169, 0.3);
+  height: 300px;
+  font-size: 1em;
 }
 .portfolio__title {
   padding: 15px 0 0 15px;
