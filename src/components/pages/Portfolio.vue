@@ -149,13 +149,16 @@ export default {
     },
     removeBtc() {
       if (this.items[0].total > 0) {
-      this.items[0].total--
-      this.items[0].priceUsd = +this.removeComma(this.items[0].priceUsd) - this.priceBtc
-      this.balance = +this.removeComma(this.balance) - this.priceBtc
-      this.balance = this.addComma(this.balance)
-      this.items[0].priceUsd = this.addComma(this.items[0].priceUsd)
-      if (this.items[0].priceUsd == undefined) {
-        this.items[0].priceUsd = 0
+        this.items[0].total--
+        this.items[0].priceUsd = +this.removeComma(this.items[0].priceUsd) - this.priceBtc
+        this.balance = +this.removeComma(this.balance) - this.priceBtc
+        this.balance = this.addComma(this.balance)
+        this.items[0].priceUsd = this.addComma(this.items[0].priceUsd)
+        if (this.items[0].priceUsd == undefined) {
+          this.items[0].priceUsd = 0
+        }
+        if (this.balance == undefined) {
+          this.balance = 0
         }
       }
     },
@@ -171,13 +174,16 @@ export default {
     },
     removeEth() {
       if (this.items[2].total > 0) {
-      this.items[2].total--
-      this.items[2].priceUsd = +this.removeComma(this.items[2].priceUsd) - this.priceEth
-      this.balance = +this.removeComma(this.balance) - this.priceEth
-      this.balance = this.addComma(this.balance)
-      this.items[2].priceUsd = this.addComma(this.items[2].priceUsd)
-      if( this.items[2].priceUsd == undefined) {
-        this.items[2].priceUsd = 0
+        this.items[2].total--
+        this.items[2].priceUsd = +this.removeComma(this.items[2].priceUsd) - this.priceEth
+        this.balance = +this.removeComma(this.balance) - this.priceEth
+        this.balance = this.addComma(this.balance)
+        this.items[2].priceUsd = this.addComma(this.items[2].priceUsd)
+        if( this.items[2].priceUsd == undefined) {
+          this.items[2].priceUsd = 0
+          }
+        if (this.balance == undefined) {
+          this.balance = 0
         }
       }
     },
@@ -193,13 +199,16 @@ export default {
     },
     removeUsd() {
       if (this.items[1].total > 0) {
-      this.items[1].total--
-      this.items[1].priceUsd = +this.removeComma(this.items[1].priceUsd) - 1
-      this.balance = +this.removeComma(this.balance) - this.priceUsd
-      this.balance = this.addComma(this.balance)
-      this.items[1].priceUsd = this.addComma(this.items[1].priceUsd)
-      if (this.items[1].priceUsd == undefined) {
-        this.items[1].priceUsd = 0
+        this.items[1].total--
+        this.items[1].priceUsd = +this.removeComma(this.items[1].priceUsd) - 1
+        this.balance = +this.removeComma(this.balance) - this.priceUsd
+        this.balance = this.addComma(this.balance)
+        this.items[1].priceUsd = this.addComma(this.items[1].priceUsd)
+        if (this.items[1].priceUsd == undefined) {
+          this.items[1].priceUsd = 0
+          }
+        if (this.balance == undefined) {
+          this.balance = 0
         }
       }
     },
