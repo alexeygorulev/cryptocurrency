@@ -1,3 +1,30 @@
+.portfolio__container {
+  min-width: 45vw;
+  box-shadow: 0px 2px 10px 0px rgb(145, 59, 169, 0.3);
+  height: 300px;
+  font-size: 1em;
+}
+.portfolio__title {
+  padding: 15px 0 0 15px;
+  font-weight: bold;
+  @media screen and (max-width: $smPhoneWidth) {
+    font-size: 0.8em;
+  }
+
+}
+.title__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 0.8em;
+  color: #c4c4c4;
+  & p {
+    padding: 4px 0;
+  }
+  @media screen and (max-width: $smPhoneWidth) {
+    font-size: 0.6em;
+  }
+}
 .title__price {
   color: rgb(22, 199, 132);
   display: flex;
@@ -14,19 +41,6 @@
     margin-left: 5px;
   }
 }
-.title__list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  font-size: 0.8em;
-  color: #c4c4c4;
-  & p {
-    padding: 4px 0;
-  }
-  @media screen and (max-width: $smPhoneWidth) {
-    font-size: 0.6em;
-  }
-}
 .img__selected {
   position: relative;
   left: 2px;
@@ -37,7 +51,6 @@
     height: 12px;
   }
 }
-
 .title__item {
   font-size: 0.9em;
   margin: 10px 0 10px 17px;
@@ -53,16 +66,9 @@
     font-weight: bold;
     padding: 10px 0 15px 10px;
   }
-}
-.portfolio__container {
-  min-width: 45vw;
-  box-shadow: 0px 2px 10px 0px rgb(145, 59, 169, 0.3);
-  height: 300px;
-  font-size: 1em;
-}
-.portfolio__title {
-  padding: 15px 0 0 15px;
-  font-weight: bold;
+  @media screen and (max-width: $smPhoneWidth) {
+    font-size: 0.7em;
+  }
 }
 .title__names {
   display: flex;

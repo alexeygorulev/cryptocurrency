@@ -73,17 +73,11 @@ export default {
       items: items,
     }
   },
-  mounted() {
+  created() {
     this.getPriceBtc()
     this.getPriceEth()
-    this.getPriceUsd()
   },
   methods: {
-    getPriceUsd() {
-      this.items[1].priceUsd *= this.items[1].total
-      this.currencyMovementUsd.unshift(this.items[1].priceUsd)
-
-    },
     getPriceBtc() {
       DataService.getPriceBtcToUsd()
       .then((res) => {
@@ -93,6 +87,7 @@ export default {
             this.items[index].priceUsd = res.data.bitcoin.usd * this.items[index].total
             this.balance +=  this.items[index].priceUsd
             this.currencyMovementBtc.unshift(this.items[index].priceUsd)
+            this.items[0].priceUsd = this.addComma(this.items[0].priceUsd)
           }
         }
       })
@@ -106,6 +101,9 @@ export default {
             this.items[index].priceUsd = res.data.ethereum.usd * this.items[index].total
             this.balance +=  this.items[index].priceUsd
             this.currencyMovementEth.unshift(this.items[index].priceUsd)
+            this.items[2].priceUsd = this.addComma(this.items[2].priceUsd)
+            this.balance = this.addComma(this.balance)
+
           }
         }
       })
@@ -114,83 +112,88 @@ export default {
       if (number.toFixed().toString().length > 3 && number.toFixed().toString().length < 7 ) {
         const a = number.toFixed().toString().split('').reverse()
         a.splice(3,0, ",")
-        return "$" + a.reverse().join("")
+        return a.reverse().join("")
         } else if( number.toFixed().toString().length > 6 ) {
           const a = number.toFixed().toString().split('').reverse()
           a.splice(3, 0, ',')
+          a.splice(7, 0, ',')
           return  a.reverse().join("")
         }
     },
     removeComma(number) {
-      if (number.toFixed().toString().length > 3 && number.toFixed().toString().length < 7 ) {
-        const a = number.toFixed().toString().split('').reverse()
-        a.splice(4,1)
+      if (number.toString().length > 3 && number.toString().length <= 7
+      && number.toString().split('').find(item => item == ',') == ',' )
+        {
+        console.log('тута')
+        const a = number.toString().split('').reverse()
+        a.splice(3,1)
         return  a.reverse().join("")
-        } else if( number.toFixed().toString().length > 6 ) {
-          const a = number.toFixed().toString().split('').reverse()
-          a.splice(2, 1)
+        } else if( number.toString().length > 6
+        && number.toString().split('').find(item => item == ',') == ',')
+        {
+          const a = number.toString().split('').reverse()
+          a.splice(3, 1)
+          a.splice(6, 1)
           return  a.reverse().join("")
-        }
+        } else return number
     },
     // добавление и убавление биткойна
     addBtc() {
-      if (this.items[0].total > 0) {
+      if (this.items[0].total >= 0) {
       this.items[0].total++
-      this.items[0].priceUsd += this.priceBtc
-      this.currencyMovementBtc.unshift(this.items[0].priceUsd)
-      this.balance += this.priceBtc
+      this.items[0].priceUsd = +this.removeComma(this.items[0].priceUsd) + this.priceBtc
+      this.balance = +this.removeComma(this.balance) + this.priceBtc
+      this.balance = this.addComma(this.balance)
+      this.items[0].priceUsd = this.addComma(this.items[0].priceUsd)
       }
     },
     removeBtc() {
       if (this.items[0].total > 0) {
       this.items[0].total--
-      this.items[0].priceUsd -= this.priceBtc
-      this.currencyMovementBtc.unshift(this.items[0].priceUsd)
-      this.balance -= this.priceBtc
+      this.items[0].priceUsd = +this.removeComma(this.items[0].priceUsd) - this.priceBtc
+      this.balance = +this.removeComma(this.balance) - this.priceBtc
+      this.balance = this.addComma(this.balance)
+      this.items[0].priceUsd = this.addComma(this.items[0].priceUsd)
       }
     },
     // добавление и убавление эфира
     addEth() {
-      if (this.items[2].total > 0) {
+      if (this.items[2].total >= 0) {
       this.items[2].total++
-      this.items[2].priceUsd += this.priceEth
-      this.currencyMovementEth.unshift(this.items[2].priceUsd)
-      this.balance += this.priceEth
+      this.items[2].priceUsd = +this.removeComma(this.items[2].priceUsd) + this.priceEth
+      this.balance = +this.removeComma(this.balance) + this.priceEth
+      this.balance = this.addComma(this.balance)
+      this.items[2].priceUsd = this.addComma(this.items[2].priceUsd)
       }
     },
     removeEth() {
       if (this.items[2].total > 0) {
       this.items[2].total--
-      this.items[2].priceUsd -= this.priceEth
-      this.currencyMovementEth.unshift(this.items[2].priceUsd)
-      this.balance -= this.priceEth
+      this.items[2].priceUsd = +this.removeComma(this.items[2].priceUsd) - this.priceEth
+      this.balance = +this.removeComma(this.balance) - this.priceEth
+      this.balance = this.addComma(this.balance)
+      this.items[2].priceUsd = this.addComma(this.items[2].priceUsd)
       }
     },
     // добавление и убавление доллара
     addUsd() {
-      if (this.items[1].total > 0) {
+      if (this.items[1].total >= 0) {
       this.items[1].total++
-      this.items[1].priceUsd++
-      this.currencyMovementUsd.unshift(this.items[1].priceUsd)
-      this.balance += this.priceUsd
+      this.items[1].priceUsd = +this.removeComma(this.items[1].priceUsd) + 1
+      this.balance = +this.removeComma(this.balance) + this.priceUsd
+      this.balance = this.addComma(this.balance)
+      this.items[1].priceUsd = this.addComma(this.items[1].priceUsd)
       }
     },
     removeUsd() {
       if (this.items[1].total > 0) {
       this.items[1].total--
-      this.items[1].priceUsd--
-      this.currencyMovementUsd.unshift(this.items[1].priceUsd)
-      this.balance -= this.priceUsd
+      this.items[1].priceUsd = +this.removeComma(this.items[1].priceUsd) - 1
+      this.balance = +this.removeComma(this.balance) - this.priceUsd
+      this.balance = this.addComma(this.balance)
+      this.items[1].priceUsd = this.addComma(this.items[1].priceUsd)
       }
     },
-
-
   },
 }
 </script>
-
-<style lang="scss">
-
-
-
-</style>

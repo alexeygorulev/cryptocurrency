@@ -87,7 +87,7 @@ export const items = [
     url: require("@/assets/img/USD.png"),
     urlPlus: require("@/assets/img/plus.png"),
     urlMinus: require("@/assets/img/minus.png"),
-    priceUsd: 1,
+    priceUsd: "12,300",
     total: 12300
   },
   {

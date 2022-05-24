@@ -1,7 +1,6 @@
 .body__container {
   min-width: 440px;
   flex-direction: column;
-  // border: 1px solid #fff;
   @media screen and (max-width: $tableWidth) {
     min-width: 370px;
   }
@@ -14,8 +13,6 @@
   @media screen and (max-width: $smPhoneWidth) {
     min-width: 250px;
   }
-
-
 }
 .icon__container{
   color: #c4c4c4;
@@ -23,25 +20,18 @@
   margin-bottom: 20px;
   font-size: 1.1rem;
 }
-
 .img__items {
   width: 1.9em;
   margin-right: 10px;
-
 }
-
 .form__wrapper {
   border-radius: 10px;
   box-shadow: 0px 2px 10px 0px rgb(145, 59, 169, 0.3);
   padding: 5px 0;
-
 }
-
-
 .form__container {
   display: flex;
   color: brown;
-
 }
 .selected__wrapper{
   display: flex;
@@ -50,7 +40,6 @@
   justify-content: space-around;
   @media screen and (max-width: $smPhoneWidth) {
     margin: 0;
-
   }
 }
 
