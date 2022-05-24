@@ -152,9 +152,9 @@ export default {
     type: 'line',
     data: data,
     options: {
+      maintainAspectRatio: false,
       pointHoverRadius: 5,
       radius: 4,
-      responsive: true,
       },
     };
     myChart = new Chart(ctx, config)
@@ -166,10 +166,6 @@ export default {
 </script>
 
 <style lang="scss">
-.chart__portfolio {
-  position: relative;
-  width: 50vw;
-  height: 20vh;
-}
+
 
 </style>

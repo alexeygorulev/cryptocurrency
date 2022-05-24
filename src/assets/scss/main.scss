@@ -114,6 +114,14 @@ section,
   //   max-width: $smPhoneWidth;
   // }
 }
+.Card {
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: $smTableWidth) {
+    flex-direction: column;
+  }
+}
+
 
 
 

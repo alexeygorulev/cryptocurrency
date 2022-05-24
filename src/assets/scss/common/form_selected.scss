@@ -1,48 +1,51 @@
 
 .img__selected {
-    max-width: 1.4em;
-    margin-right: 5px;
-  }
-  .title {
-    position: relative;
-    color: #fff;
-    top: 20%;
-  }
-  .v-select {
-    margin: 15px 10px 15px 10px;
-    position: relative;
-    border: 1.5px solid rgba(145, 59, 169, 0.3);
-    display: flex;
-    flex-direction: column;
-    height: 5vh;
-    min-width: 5.5rem;
-    border-radius: 7px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .options__items {
-      height: 30px ;
-      padding-top: 5px;
-      &:hover {
-      background-color: rgba(145, 59, 169, 0.8)
+  max-width: 1.3em;
+  margin-right: 5px;
+}
+.title {
+  position: relative;
+  color: #fff;
+  top: 20%;
+}
+.v-select {
+  margin: 15px 10px 15px 10px;
+  position: relative;
+  border: 1.5px solid rgba(145, 59, 169, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 28px;
+  min-width: 5.5rem;
+  border-radius: 7px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  @media screen and (max-width: $smPhoneWidth) {
+    height: 25px;
+    min-width: 4rem;
+    font-size: 0.7rem;
     }
-    }
-
-  .options {
-    border: 1.5px solid rgba(145, 59, 169, 0.3);
-    background-color: #222531;
-    min-width: 5.5rem;
-    position:absolute ;
-    z-index: 999;
-    top: 35px;
-    left: 0;
-    right: 0;
-    & p:hover {
-      background-color: rgba(145, 59, 169, 0.8);
-    }
-    &::before{
-      border-bottom: 4px #fff;
-    }
-
+}
+.options__items {
+  height: 30px ;
+  padding-top: 5px;
+  &:hover {
+  background-color: rgba(145, 59, 169, 0.8)
   }
+}
+.options {
+  border: 1.5px solid rgba(145, 59, 169, 0.3);
+  background-color: #222531;
+  min-width: 5.5rem;
+  position:absolute ;
+  z-index: 999;
+  top: 35px;
+  left: 0;
+  right: 0;
+  & p:hover {
+    background-color: rgba(145, 59, 169, 0.8);
+  }
+  &::before {
+    border-bottom: 4px #fff;
+  }
+}

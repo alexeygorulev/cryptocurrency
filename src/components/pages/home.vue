@@ -34,12 +34,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .Card {
-    display: flex;
-    justify-content: space-between;
-    // border: 1px solid #fff;
-    // width: 100vw;
-  }
+
 
 
 </style>

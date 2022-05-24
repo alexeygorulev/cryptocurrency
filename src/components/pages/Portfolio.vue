@@ -58,13 +58,11 @@
           </div>
         </div>
       </div>
-    <div class="Card Diagram">
       <DiagramPortfolio
         :currencyMovementBtc ="currencyMovementBtc"
         :currencyMovementUsd ="currencyMovementUsd"
         :currencyMovementEth ="currencyMovementEth"
       />
-    </div>
   </div>
 </template>
 

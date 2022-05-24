@@ -1,6 +1,6 @@
 <template>
 <div class="chart">
-    <canvas  id="myChartBtcToUsd" ></canvas>
+    <canvas  id="myChartBtcToUsd"></canvas>
 </div>
 </template>
 
@@ -154,12 +154,5 @@ export default {
 </script>
 
 <style lang="scss">
-.chart {
-  position: relative;
-  width: 60vw;
-  height: 40vh;
-
-
-}
 
 </style>

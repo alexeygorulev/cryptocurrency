@@ -72,9 +72,9 @@ const config = {
   type: 'line',
   data: data,
   options: {
+    maintainAspectRatio: false,
     pointHoverRadius: 5,
     radius: 4,
-    responsive: true,
     },
   };
 

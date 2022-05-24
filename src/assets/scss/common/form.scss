@@ -1,7 +1,20 @@
 .body__container {
-  min-width: 34vw;
+  min-width: 440px;
   flex-direction: column;
   // border: 1px solid #fff;
+  @media screen and (max-width: $tableWidth) {
+    min-width: 370px;
+  }
+  @media screen and (max-width: $smDesktopWidth) {
+    min-width: 370px;
+  }
+  @media screen and (max-width: $phoneWidth) {
+    min-width: 340px;
+  }
+  @media screen and (max-width: $smPhoneWidth) {
+    min-width: 250px;
+  }
+
 
 }
 .icon__container{
@@ -20,7 +33,6 @@
 .form__wrapper {
   border-radius: 10px;
   box-shadow: 0px 2px 10px 0px rgb(145, 59, 169, 0.3);
-  // border: 1px solid #fff;
   padding: 5px 0;
 
 }
@@ -36,6 +48,10 @@
   flex-direction: column;
   margin: 0 20px 0px 10px;
   justify-content: space-around;
+  @media screen and (max-width: $smPhoneWidth) {
+    margin: 0;
+
+  }
 }
 
 .form__list {
