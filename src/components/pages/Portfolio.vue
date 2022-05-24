@@ -1,11 +1,9 @@
 <template>
   <div class="Card">
-    <div class="Card Form">
-      <div class="form__wrapper">
-        <div class="note-form">
-          <div class="title">
-            <span>Your  Portfolio</span>
-          </div>
+      <div class="portfolio__container">
+        <div class="portfolio__title">
+          <span>Your  Portfolio</span>
+        </div>
           <div class="title__item">
             <div>
               Current balance:
@@ -14,49 +12,40 @@
               <span>$ {{balance}}</span>
             </div>
           </div>
-          <div class="title">
+          <div class="title__item white">
             Your Assets:
           </div>
           <div class="title__list">
-            <div >
+            <div class="title__names">
               <p>Name</p>
-            </div>
-            <div class="title__items">
-              <p>Price $</p>
-              <p>add</p>
-              <p>decrease</p>
-              <p>Total</p>
-            </div>
-          </div>
-          <div class="title__list">
-            <div class="item" >
-              <div v-for="item in items" :key="item.id" >
-                <p class="item img"><img class="img__selected" :src="item.url" alt="">
+              <p class="title__name" v-for="item in items" :key="item.id">
+                <img class="img__selected" :src="item.url" alt="">
                 {{item.name}}
-                </p>
-              </div>
+              </p>
             </div>
             <div class="title__items">
-              <div class="price" >
+              <div class="title__price">
+                <p>Price $</p>
                 <p v-for="item in items" :key="item.id" >$ {{item.priceUsd}}</p>
               </div>
-              <div class="item" >
+              <div>
+                <p>add</p>
                 <p><img @click="addBtc" class="img__selected icons" src="@/assets/img/plus.png" alt=""></p>
                 <p><img @click="addUsd" class="img__selected icons" src="@/assets/img/plus.png" alt=""></p>
                 <p><img @click="addEth" class="img__selected icons" src="@/assets/img/plus.png" alt=""></p>
-              </div>
-              <div class="item" >
+                </div>
+              <div>
+                <p>decrease</p>
                 <p><img @click="removeBtc" class="img__selected icons" src="@/assets/img/minus.png" alt=""></p>
                 <p><img @click="removeUsd" class="img__selected icons" src="@/assets/img/minus.png" alt=""></p>
                 <p><img @click="removeEth" class="img__selected icons" src="@/assets/img/minus.png" alt=""></p>
-              </div>
-              <div class="total">
+                </div>
+              <div>
+                <p>Total</p>
                 <p v-for="item in items" :key="item.id" >{{item.total}}</p>
-              </div>
+                </div>
             </div>
           </div>
-          </div>
-        </div>
       </div>
       <DiagramPortfolio
         :currencyMovementBtc ="currencyMovementBtc"
@@ -202,8 +191,6 @@ export default {
 
 <style lang="scss">
 
-.note-form {
-  padding: 15px 0 0 15px;
-}
+
 
 </style>

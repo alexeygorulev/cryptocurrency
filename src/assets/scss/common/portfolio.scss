@@ -1,55 +1,30 @@
-.total {
-  padding-right: 1vw ;
-}
-.item {
-  width: 15vh;
-  &.img {
-    display: flex;
-    flex-direction: row;
-  }
-}
-.price {
+.title__price {
   color: rgb(22, 199, 132);
-  padding-right: 20px;
-
-}
-.items__name {
   display: flex;
-  flex-direction: row;
-  width: 16vh;
-  margin-right: 7vw;
-
-
+  flex-direction: column;
+  max-width: 120px;
 }
-.items__list {
-  display: flex;
-  flex-direction: row;
-  font-size: 14px;
-  color: #8f8c8c;
 
-
-}
 .title__items {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
-  align-content: center;
-  width: 60vh;
-
+  width: 340px;
+  text-align: center;
+  padding-right: 10px;
+  & p {
+    margin-left: 5px;
   }
+}
 
 .title__list {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  font-size: 14px;
+  font-size: 0.8em;
   color: #c4c4c4;
   & p {
-    position: relative;
-    right: 10px;
-    margin: 10px 10px;
+    padding: 4px 0;
   }
-
 }
 .img__selected {
   position: relative;
@@ -61,24 +36,46 @@
     height: 12px;
   }
 }
-  .note-form {
-    display: flex;
-    flex-direction: column;
-    width: 43vw;
+
+.title__item {
+  font-size: 0.9em;
+  margin: 10px 0 10px 17px;
+  color: #8f8c8c;
+  &.big {
+    font-size: 1.5em;
+    margin: 0 0 auto;
+    color: rgba(22, 199, 132, 0.9);
+    padding-top: 5px;
   }
-  // .title {
-  //   font-weight: 550;
-  //   color: #c4c4c4;
-  //   // margin: 10px 0;
-  // }
-  .title__item {
-    font-size: 14px;
-    margin: 0 8px;
-    color: #8f8c8c;
-    &.big {
-      font-size: 25px;
-      margin: 0 0 auto;
-      color: rgba(22, 199, 132, 0.9);
-      align-items: center;
-    }
+  &.white {
+    color: #c4c4c4;
+    font-weight: bold;
+    padding: 10px 0 15px 10px;
   }
+}
+.portfolio__container {
+min-width: 45vw;
+box-shadow: 0px 2px 10px 0px rgb(145, 59, 169, 0.3);
+height: 300px;
+font-size: 1em;
+}
+.portfolio__title {
+  padding: 15px 0 0 15px;
+  font-weight: bold;
+}
+.title__names {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  flex: 0 1 auto;
+  margin-left: 10px ;
+  & p:first-child {
+    text-align: center;
+  }
+}
+.title__name {
+  display: flex;
+  flex-direction: row;
+  padding: 4px 0;
+}
+
